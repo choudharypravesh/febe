@@ -17,7 +17,7 @@ export default function ListNav({ importGraph, addGraph, addExample }) {
         <div className="nav">
             <div>
                 <Link href="/" passHref>
-                    <strong>DBER</strong> | Database design tool based on entity relation diagram
+                    <strong>FEBE</strong>
                 </Link>
             </div>
             <Space>

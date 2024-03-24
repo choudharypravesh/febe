@@ -404,11 +404,8 @@ export default function Home() {
     return (
         <div className="graph">
             <Head>
-                <title>DBER</title>
-                <meta
-                    name="description"
-                    content="Database design tool based on entity relation diagram"
-                />
+                <title>FEBE</title>
+                <meta name="description" content="Frontend for backend" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

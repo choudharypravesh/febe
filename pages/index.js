@@ -4,17 +4,12 @@ import { Button, PageHeader, Space, Typography, Steps } from '@arco-design/web-r
 
 const Step = Steps.Step;
 
-import IconGithub from '../public/images/github.svg';
-
 export default function Home() {
     return (
         <>
             <Head>
-                <title>DBER</title>
-                <meta
-                    name="description"
-                    content="Database design tool based on entity relation diagram"
-                />
+                <title>FEBE</title>
+                <meta name="description" content="Frontend for backend" />
                 <link rel="icon" href="/favicon.ico" />
                 <style>{'body { overflow: auto !important; }'}</style>
             </Head>
@@ -27,32 +22,19 @@ export default function Home() {
                         boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)',
                         zIndex: 2,
                     }}
-                    title="DBER"
-                    subTitle="Database design tool based on entity relation diagram"
+                    title="FEBE"
+                    subTitle="Frontend for backend"
                     extra={
                         <Space>
                             <Link href="/graphs">
-                                <Button type="primary">
-                                    Get started free & no registration required.
-                                </Button>
+                                <Button type="primary">Get started</Button>
                             </Link>
-
-                            <Button
-                                type="primary"
-                                icon={<IconGithub className="arco-icon" />}
-                                style={{ backgroundColor: '#333' }}
-                                href="https://github.com/findyourmagic/dber"
-                            >
-                                Repository
-                            </Button>
                         </Space>
                     }
                 />
                 <div className="index-bg">
                     <Typography.Title className="tc" type="secondary">
-                        <p>Simply easy</p>
-                        <p className="mark">Database designing & Data modeling tool</p>
-                        <p>Open source and free.</p>
+                        <p className="mark">Let's create your database architecture</p>
                     </Typography.Title>
                     <Link href="/graphs">
                         <Button
@@ -82,44 +64,6 @@ export default function Home() {
                         <Step title="Create relationships" description="Drag and drop" />
                         <Step title="Export SQL scripts" description="It's that simple" />
                     </Steps>
-                </div>
-
-                <div className="index-video-container">
-                    <div className="faq">
-                        <h2>FAQ</h2>
-                        <dl>
-                            <dt>How to register?</dt>
-                            <dd>No registration required, just start playing.</dd>
-                        </dl>
-                        <dl>
-                            <dt>Where is the data stored?</dt>
-                            <dd>
-                                Stored in local storage and indexDB, so it is best to make a backup
-                                before cleaning the browser.
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>Is it possible to collaborate across devices?</dt>
-                            <dd>Not for the time being.</dd>
-                        </dl>
-                    </div>
-                    <video src="/detail.mp4" muted autoPlay loop></video>
-                </div>
-                <div className="index-footer">
-                    <div>
-                        <strong>DBER</strong> | Database design tool based on entity relation
-                        diagram
-                    </div>
-                    <Link href="/graphs">
-                        <Button type="text">Get started free & no registration required.</Button>
-                    </Link>
-                    <Button
-                        type="text"
-                        icon={<IconGithub className="arco-icon" />}
-                        href="https://github.com/findyourmagic/dber"
-                    >
-                        Repository
-                    </Button>
                 </div>
             </div>
         </>
