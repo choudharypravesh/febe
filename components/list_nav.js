@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Space, Button, Switch } from '@arco-design/web-react';
 import { IconSunFill, IconMoonFill } from '@arco-design/web-react/icon';
-
+import authState from '@/hooks/use-auth-state';
 import graphState from '@/hooks/use-graph-state';
 
 /**
@@ -12,6 +12,7 @@ import graphState from '@/hooks/use-graph-state';
  */
 export default function ListNav({ importGraph, addGraph, addExample }) {
     const { theme, setTheme } = graphState.useContainer();
+    const { logout } = authState.useContainer();
 
     return (
         <div className="nav">
@@ -21,6 +22,11 @@ export default function ListNav({ importGraph, addGraph, addExample }) {
                 </Link>
             </div>
             <Space>
+                <Space>
+                    <Button onClick={() => logout()} type="secondary">
+                        Logout
+                    </Button>
+                </Space>
                 <Button size="small" type="outline" shape="round" onClick={() => importGraph()}>
                     Import
                 </Button>

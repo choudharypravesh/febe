@@ -21,7 +21,7 @@ import {
     IconCopy,
 } from '@arco-design/web-react/icon';
 import { useState, useEffect } from 'react';
-
+import ProtectedRoute from '@/components/ProtectedRoute';
 import ListNav from '@/components/list_nav';
 import exampleData from '@/data/example';
 import { addGraph, delGraph, getAllGraphs } from '@/engine/db';
@@ -76,7 +76,7 @@ export default function Home() {
     };
 
     return (
-        <>
+        <ProtectedRoute>
             <Head>
                 <title>FEBE</title>
                 <meta name="description" content="Frontend for backend" />
@@ -160,6 +160,6 @@ export default function Home() {
                 onCloseModal={() => setShowModal('')}
                 cb={args => handlerImportGraph(args)}
             />
-        </>
+        </ProtectedRoute>
     );
 }

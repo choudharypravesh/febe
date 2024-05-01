@@ -77,6 +77,7 @@ export const addGraph = async (graph = {}, id = null) => {
             clientW: global.innerWidth,
             clientH: global.innerHeight,
         }),
+        // userid: "1311281970"
     };
     const r = await (
         await fetch(`${soulUrl}/tables/graphs/rows`, {
@@ -94,6 +95,7 @@ export const saveGraph = async graph => {
         box: JSON.stringify(graph.box),
         linkDict: JSON.stringify(graph.linkDict),
         tableDict: JSON.stringify(graph.tableDict),
+        // userid: "1311281970",
     };
     return await (
         await fetch(`${soulUrl}/tables/graphs/rows/${graph.id}/`, {

@@ -8,6 +8,7 @@ import graphState from '@/hooks/use-graph-state';
 const Step = Steps.Step;
 
 export default function Home() {
+    const { logout } = authState.useContainer();
     return (
         <ProtectedRoute>
             <Head>
@@ -28,16 +29,23 @@ export default function Home() {
                     title="FEBE"
                     subTitle="Frontend for backend"
                     extra={
-                        <Space>
-                            <Link href="/graphs">
-                                <Button type="primary">Get started</Button>
-                            </Link>
-                        </Space>
+                        <>
+                            <Space>
+                                <Link href="/graphs">
+                                    <Button type="primary">Get started</Button>
+                                </Link>
+                            </Space>
+                            <Space>
+                                <Button onClick={() => logout()} type="secondary">
+                                    Logout
+                                </Button>
+                            </Space>
+                        </>
                     }
                 />
                 <div className="index-bg">
                     <Typography.Title className="tc" type="secondary">
-                        <p className="mark">Let's create your database architecture</p>
+                        <p className="mark">Lets create your database architecture</p>
                     </Typography.Title>
                     <Link href="/graphs">
                         <Button
