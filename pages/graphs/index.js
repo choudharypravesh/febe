@@ -22,11 +22,11 @@ import {
 } from '@arco-design/web-react/icon';
 import { useState, useEffect } from 'react';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import ListNav from '@/components/list_nav';
+import ListNav from '@/components/schema/list_nav';
 import exampleData from '@/data/example';
 import { addGraph, delGraph, getAllGraphs } from '@/engine/db';
 
-const ImportModal = dynamic(() => import('@/components/import_modal'), { ssr: false });
+const ImportModal = dynamic(() => import('@/components/schema/import_modal'), { ssr: false });
 
 /**
  * It fetches all the graphs from the database and displays them in a list

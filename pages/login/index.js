@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Form, Input, Button, Grid, PageHeader, Space } from '@arco-design/web-react';
 import { useRouter } from 'next/router';
 import authState from '@/hooks/use-auth-state';
+import BaseLayout from '../../components/BaseLayout';
+
+const FormItem = Form.Item;
+const Row = Grid.Row;
+const Col = Grid.Col;
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 const initialFormData = {
@@ -11,13 +17,13 @@ const initialFormData = {
 
 export default function Home() {
     const [formData, setFormData] = useState(initialFormData);
-    const { isLoggedIn, login } = authState.useContainer();
+    const { isLoggedIn, login, setAccessToken } = authState.useContainer();
     const [error, setError] = useState(null);
 
+    const [form] = Form.useForm();
     const router = useRouter();
 
-    const handleChange = e => {
-        const { name, value } = e.target;
+    const handleChange = (name, value) => {
         setFormData({
             ...formData,
             [name]: value,
@@ -28,8 +34,7 @@ export default function Home() {
         isLoggedIn && router.push('/');
     }, [isLoggedIn]);
 
-    const handleSubmit = async e => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         try {
             const response = await fetch(`${baseUrl}/login`, {
                 method: 'POST',
@@ -38,61 +43,83 @@ export default function Home() {
                 },
                 body: JSON.stringify(formData),
             });
-            setFormData(initialFormData);
-            login();
+            const responsebody = await response.json();
+            console.log('🚀 ~ handleSubmit ~ response:', responsebody);
 
             if (!response.ok) {
-                throw new Error('Authentication failed!');
+                throw new Error('Wrong Email/Password. Please try again!');
+            } else {
+                setFormData(initialFormData);
+                login(responsebody.token);
             }
-
-            // Redirect to dashboard or do something else on success
-            // For example, you can use Next.js router to navigate
         } catch (error) {
             setError(error.message);
         }
     };
 
     return (
-        <div className="text-center m-5-auto">
-            <h2>Sign in to us</h2>
-            {error && <p className="text-red-500">{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <p>
-                    <label>Email address</label>
-                    <br />
-                    <input
-                        type="text"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </p>
-                <p>
-                    <label>Password</label>
-                    <Link href="/forget-password">
-                        <label className="right-label">Forget password?</label>
-                    </Link>
-                    <br />
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </p>
-                <p>
-                    <button id="sub_btn" type="submit">
-                        Login
-                    </button>
-                </p>
-            </form>
-            <footer>
-                <p>
-                    First time? <Link href="/register">Create an account</Link>.
-                </p>
-            </footer>
-        </div>
+        <BaseLayout>
+            <div className="login-container">
+                <PageHeader
+                    style={{
+                        background: 'var(--color-bg-2)',
+                        position: 'sticky',
+                        top: 0,
+                        boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)',
+                        zIndex: 2,
+                    }}
+                    title="FEBE"
+                    subTitle="Frontend for backend"
+                />
+                <div className="form-container">
+                    <h2 className="text-center">Sign in to us</h2>
+
+                    <Form
+                        form={form}
+                        onSubmit={() => handleSubmit()}
+                        onValuesChange={(v, vs) => {
+                            console.log(v, vs);
+                        }}
+                        autoComplete="off"
+                    >
+                        <FormItem
+                            field="email"
+                            label="Email"
+                            rules={[{ required: true, message: 'email is required' }]}
+                        >
+                            <Input
+                                type="text"
+                                name="email"
+                                value={formData.email}
+                                onChange={value => handleChange('email', value)}
+                                placeholder="Enter your email address"
+                            />
+                        </FormItem>
+                        <FormItem
+                            field="password"
+                            label="Password"
+                            rules={[{ required: true, message: 'password is required' }]}
+                        >
+                            <Input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={value => handleChange('password', value)}
+                                placeholder="Enter your password"
+                            />
+                        </FormItem>
+                        <FormItem wrapperCol={{ offset: 5 }}>
+                            <Button type="primary" htmlType="submit">
+                                Login
+                            </Button>
+                        </FormItem>
+                        <FormItem>
+                            First time? <Link href="/register">Create an account</Link>.
+                        </FormItem>
+                    </Form>
+                    {error && <p className="text-red-500">{error}</p>}
+                </div>
+            </div>
+        </BaseLayout>
     );
 }

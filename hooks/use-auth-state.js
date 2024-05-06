@@ -7,18 +7,29 @@ import { createContainer } from 'unstated-next';
  */
 function useAuthState() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [accessToken, setAccessToken] = useState(null);
 
-    const login = () => {
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, []);
+
+    const login = token => {
+        setAccessToken(token);
+        sessionStorage.setItem('token', token);
         // Implement login logic here
         setIsLoggedIn(true);
     };
 
     const logout = () => {
         // Implement logout logic here
+        sessionStorage.removeItem('token');
         setIsLoggedIn(false);
     };
 
     return {
+        accessToken,
+        setAccessToken,
         isLoggedIn,
         login,
         logout,

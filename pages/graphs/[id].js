@@ -4,22 +4,22 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-import TableForm from '@/components/table_form';
-import FieldForm from '@/components/field_form';
-import LinkPath from '@/components/link_path';
-import LinkModal from '@/components/link_modal';
-import Nav from '@/components/nav';
-import Table from '@/components/table';
-import TableNav from '@/components/table_nav';
-import ContextMenu from '@/components/context_menu';
-import LogsDrawer from '@/components/logs';
+import TableForm from '@/components/schema/table_form';
+import FieldForm from '@/components/schema/field_form';
+import LinkPath from '@/components/schema/link_path';
+import LinkModal from '@/components/schema/link_modal';
+import Nav from '@/components/schema/nav';
+import Table from '@/components/schema/table';
+import TableNav from '@/components/schema/table_nav';
+import ContextMenu from '@/components/schema/context_menu';
+import LogsDrawer from '@/components/schema/logs';
 import graphState from '@/hooks/use-graph-state';
 import tableModel from '@/hooks/table-model';
 
-const ExportModal = dynamic(() => import('@/components/export_modal'), {
+const ExportModal = dynamic(() => import('@/components/schema/export_modal'), {
     ssr: false,
 });
-const ImportModal = dynamic(() => import('@/components/import_modal'), {
+const ImportModal = dynamic(() => import('@/components/schema/import_modal'), {
     ssr: false,
 });
 

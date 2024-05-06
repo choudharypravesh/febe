@@ -45,7 +45,7 @@ export default function Home() {
                 />
                 <div className="index-bg">
                     <Typography.Title className="tc" type="secondary">
-                        <p className="mark">Lets create your database architecture</p>
+                        <p className="mark">FEBE helps you create your database architecture</p>
                     </Typography.Title>
                     <Link href="/graphs">
                         <Button
@@ -73,7 +73,7 @@ export default function Home() {
                     >
                         <Step title="Design data structures" description="Visually" />
                         <Step title="Create relationships" description="Drag and drop" />
-                        <Step title="Export SQL scripts" description="It's that simple" />
+                        <Step title="Give us 10 mins" description="Your APIs are ready!" />
                     </Steps>
                 </div>
             </div>
