@@ -3,7 +3,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useHotkeys } from 'react-hotkeys-hook';
-
+import { Button, Space } from '@arco-design/web-react';
+import { IconCheck } from '@arco-design/web-react/icon';
 import TableForm from '@/components/schema/table_form';
 import FieldForm from '@/components/schema/field_form';
 import LinkPath from '@/components/schema/link_path';
@@ -470,6 +471,17 @@ export default function Home() {
                 setTableSelectId={setTableSelectId}
                 tableSelectedId={tableSelectedId}
             />
+            <div className="floating-button">
+                <Button
+                    size="large"
+                    shape="round"
+                    type="primary"
+                    status="success"
+                    icon={<IconCheck />}
+                >
+                    Publish
+                </Button>
+            </div>
         </div>
     );
 }

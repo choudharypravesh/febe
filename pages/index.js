@@ -36,7 +36,12 @@ export default function Home() {
                                 </Link>
                             </Space>
                             <Space>
-                                <Button onClick={() => logout()} type="secondary">
+                                <Button
+                                    size="small"
+                                    shape="round"
+                                    onClick={() => logout()}
+                                    type="secondary"
+                                >
                                     Logout
                                 </Button>
                             </Space>

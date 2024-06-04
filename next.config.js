@@ -17,13 +17,13 @@ const nextConfig = withSvgr({
     },
 });
 
-if (packageInfo.dbAdaptor === 'soul' || packageInfo.devDependencies['soul-cli']) {
-    if (!packageInfo.devDependencies['soul-cli']) {
-        console.log('running npm install -D soul-cli');
-        exec.execSync('npm install -D soul-cli');
-    }
-    console.log('starting soul-cli');
-    exec.exec('soul -d data/sqlite.db -p 3001');
-}
+// if (packageInfo.dbAdaptor === 'soul' || packageInfo.devDependencies['soul-cli']) {
+//     if (!packageInfo.devDependencies['soul-cli']) {
+//         console.log('running npm install -D soul-cli');
+//         exec.execSync('npm install -D soul-cli');
+//     }
+//     console.log('starting soul-cli');
+//     exec.exec('soul -d data/sqlite.db -p 3001');
+// }
 
 module.exports = nextConfig;

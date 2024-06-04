@@ -22,11 +22,6 @@ export default function ListNav({ importGraph, addGraph, addExample }) {
                 </Link>
             </div>
             <Space>
-                <Space>
-                    <Button onClick={() => logout()} type="secondary">
-                        Logout
-                    </Button>
-                </Space>
                 <Button size="small" type="outline" shape="round" onClick={() => importGraph()}>
                     Import
                 </Button>
@@ -42,6 +37,11 @@ export default function ListNav({ importGraph, addGraph, addExample }) {
                     checked={theme === 'dark'}
                     onChange={e => setTheme(e ? 'dark' : 'light')}
                 />
+                <Space>
+                    <Button size="small" shape="round" onClick={() => logout()} type="secondary">
+                        Logout
+                    </Button>
+                </Space>
             </Space>
         </div>
     );

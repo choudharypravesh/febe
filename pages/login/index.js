@@ -36,7 +36,7 @@ export default function Home() {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch(`${baseUrl}/login`, {
+            const response = await fetch(`${baseUrl}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

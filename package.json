@@ -44,5 +44,5 @@
         "pre-commit": "pretty-quick --staged && npm run prettier"
     },
     "dbAdaptor": "soul",
-    "soulUrl": "http://localhost:3001/api"
+    "soulUrl": "http://134.209.28.185:3001/api"
 }

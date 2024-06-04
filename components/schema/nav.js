@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button, Space, Popconfirm, Input, Switch, Dropdown, Menu } from '@arco-design/web-react';
 import { IconSunFill, IconMoonFill, IconLeft } from '@arco-design/web-react/icon';
-
+import authState from '@/hooks/use-auth-state';
 import graphState from '@/hooks/use-graph-state';
 import tableModel from '@/hooks/table-model';
 
@@ -14,6 +14,7 @@ import tableModel from '@/hooks/table-model';
 export default function Nav({ setShowModal, setShowDrawer }) {
     const { name, setName, theme, setTheme, setTableDict, setLinkDict, version } =
         graphState.useContainer();
+    const { logout } = authState.useContainer();
     const { updateGraph, addTable, applyVersion } = tableModel();
 
     if (version !== 'currentVersion') {
@@ -127,6 +128,9 @@ export default function Nav({ setShowModal, setShowDrawer }) {
                     checked={theme === 'dark'}
                     onChange={e => setTheme(e ? 'dark' : 'light')}
                 />
+                <Button size="small" shape="round" onClick={() => logout()} type="secondary">
+                    Logout
+                </Button>
             </Space>
         </nav>
     );

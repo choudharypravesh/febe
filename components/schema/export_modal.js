@@ -65,11 +65,10 @@ export default function ExportModal({ showModal, onCloseModal }) {
                     readOnly: true,
                     minimap: { enabled: false },
                     scrollbar: {
-                        // 滚动条设置
-                        verticalScrollbarSize: 6, // 竖滚动条
-                        horizontalScrollbarSize: 6, // 横滚动条
+                        verticalScrollbarSize: 6,
+                        horizontalScrollbarSize: 6,
                     },
-                    lineNumbers: 'on', // 控制行号的出现on | off
+                    lineNumbers: 'on',
                 }}
             />
         </Modal>
