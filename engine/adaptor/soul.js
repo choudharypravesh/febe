@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { soulUrl } from '@/package.json';
+const soulUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const initGraphs = async () => {
     const data = {
@@ -13,6 +13,7 @@ const initGraphs = async () => {
             { name: 'box', type: 'Text' },
             { name: 'linkDict', type: 'Text' },
             { name: 'tableDict', type: 'Text' },
+            { name: 'isPublished', type: 'Text' },
         ],
     };
     await fetch(`${soulUrl}/tables`, {
@@ -32,6 +33,7 @@ const initGraphs = async () => {
             { name: 'tableDict', type: 'Text' },
             { name: 'createdAt', type: 'Integer' },
             { name: 'updatedAt', type: 'Integer' },
+            { name: 'isPublished', type: 'Text' },
         ],
     };
     await fetch(`${soulUrl}/tables`, {
@@ -55,7 +57,7 @@ export const getGraph = async id => {
     const r = await (await fetch(`${soulUrl}/tables/graphs/rows/${id}/`)).json();
     const [res] = r.data || [];
     if (res) {
-        ['box', 'linkDict', 'tableDict'].forEach(key => {
+        ['box', 'linkDict', 'tableDict', 'isPublished'].forEach(key => {
             if (res[key]) res[key] = JSON.parse(res[key]);
         });
     }
@@ -77,7 +79,7 @@ export const addGraph = async (graph = {}, id = null) => {
             clientW: global.innerWidth,
             clientH: global.innerHeight,
         }),
-        // userid: "1311281970"
+        isPublished: graph.isPublished ? 'true' : 'false',
     };
     const r = await (
         await fetch(`${soulUrl}/tables/graphs/rows`, {
@@ -95,6 +97,7 @@ export const saveGraph = async graph => {
         box: JSON.stringify(graph.box),
         linkDict: JSON.stringify(graph.linkDict),
         tableDict: JSON.stringify(graph.tableDict),
+        isPublished: graph.isPublished ? 'true' : 'false',
         // userid: "1311281970",
     };
     return await (
@@ -116,7 +119,7 @@ export const getLogs = async id => {
     console.log(res);
     res.forEach(item => {
         if (item) {
-            ['linkDict', 'tableDict'].forEach(key => {
+            ['linkDict', 'tableDict', 'isPublished'].forEach(key => {
                 if (item[key]) item[key] = JSON.parse(item[key]);
             });
         }
@@ -132,6 +135,7 @@ export const addLogs = async logs => {
         updatedAt: logs.updatedAt,
         linkDict: JSON.stringify(logs.linkDict),
         tableDict: JSON.stringify(logs.tableDict),
+        isPublished: graph.isPublished ? 'true' : 'false',
     };
     return await (
         await fetch(`${soulUrl}/tables/logs/rows`, {

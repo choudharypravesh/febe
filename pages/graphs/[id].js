@@ -15,7 +15,10 @@ import TableNav from '@/components/schema/table_nav';
 import ContextMenu from '@/components/schema/context_menu';
 import LogsDrawer from '@/components/schema/logs';
 import graphState from '@/hooks/use-graph-state';
+import engineState from '@/hooks/use-engine-state';
 import tableModel from '@/hooks/table-model';
+import BaseModal from '../../components/BaseModal';
+import handler from '../api/hello';
 
 const ExportModal = dynamic(() => import('@/components/schema/export_modal'), {
     ssr: false,
@@ -25,7 +28,9 @@ const ImportModal = dynamic(() => import('@/components/schema/import_modal'), {
 });
 
 export default function Home() {
+    const baseUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL;
     const {
+        id,
         tableList,
         tableDict,
         setTableDict,
@@ -36,6 +41,8 @@ export default function Home() {
         name,
         version,
     } = graphState.useContainer();
+
+    const { publish } = engineState.useContainer();
 
     const { updateGraph, addTable } = tableModel();
 
@@ -53,6 +60,8 @@ export default function Home() {
     const [formChange, setFormChange] = useState(false);
     const [editingLink, setEditingLink] = useState(null);
     const [tableSelectedId, setTableSelectId] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [isPublishDisabled, setIsPublishDisabled] = useState(false);
 
     const [linkStat, setLinkStat] = useState({
         startX: null,
@@ -402,6 +411,31 @@ export default function Home() {
         { preventDefault: true }
     );
 
+    const onConfirm = async () => {
+        const initialFormData = {
+            graph_id: id,
+        };
+        try {
+            const response = await fetch(`${baseUrl}/engine/publish`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(initialFormData),
+            });
+            const responsebody = await response.json();
+            console.log('🚀 ~ handleSubmit ~ response:', responsebody);
+
+            if (!response.ok) {
+                throw new Error('Wrong Email/Password. Please try again!');
+            } else {
+                setIsPublishDisabled(true);
+            }
+        } catch (error) {
+            // setError(error.message);
+        }
+    };
+
     return (
         <div className="graph">
             <Head>
@@ -471,8 +505,17 @@ export default function Home() {
                 setTableSelectId={setTableSelectId}
                 tableSelectedId={tableSelectedId}
             />
+            <BaseModal
+                showConfirmation={showConfirmation}
+                setShowConfirmation={setShowConfirmation}
+                onConfirm={onConfirm}
+                title={'Confirm Publish'}
+                text={'Are you sure you want to publish this schema ?'}
+            />
             <div className="floating-button">
                 <Button
+                    disabled={isPublishDisabled}
+                    onClick={() => setShowConfirmation(true)}
                     size="large"
                     shape="round"
                     type="primary"

@@ -11,7 +11,7 @@
         "prettier": "prettier -c --write **/*.{js,json}"
     },
     "dependencies": {
-        "@arco-design/web-react": "^2.45.0",
+        "@arco-design/web-react": "^2.63.0",
         "@dbml/core": "^2.5.1",
         "@monaco-editor/react": "^4.4.5",
         "classnames": "^2.3.1",
@@ -43,6 +43,5 @@
     "gitHooks": {
         "pre-commit": "pretty-quick --staged && npm run prettier"
     },
-    "dbAdaptor": "soul",
-    "soulUrl": "https://febe.servehttp.com/api"
+    "dbAdaptor": "soul"
 }

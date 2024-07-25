@@ -5,7 +5,7 @@ import { Form, Input, Button, Grid, PageHeader, Space } from '@arco-design/web-r
 import authState from '@/hooks/use-auth-state';
 import BaseLayout from '../../components/BaseLayout';
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL;
 const initialFormData = {
     userName: '',
     email: '',

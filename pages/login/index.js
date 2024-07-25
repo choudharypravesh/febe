@@ -6,10 +6,8 @@ import authState from '@/hooks/use-auth-state';
 import BaseLayout from '../../components/BaseLayout';
 
 const FormItem = Form.Item;
-const Row = Grid.Row;
-const Col = Grid.Col;
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL;
 const initialFormData = {
     email: '',
     password: '',

@@ -20,6 +20,7 @@ function useGraphState() {
     const [box, setBox] = useState({ x: 0, y: 0, w: 0, h: 0, clientW: 0, clientH: 0 });
     const [tableDict, setTableDict] = useState({});
     const [linkDict, setLinkDict] = useState({});
+    const [isPublished, setIsPublished] = useState(false);
 
     const [editingTable, setEditingTable] = useState();
     const [editingField, setEditingField] = useState({});
@@ -161,6 +162,8 @@ function useGraphState() {
         setBox,
         name,
         setName,
+        isPublished,
+        setIsPublished,
         theme,
         setTheme,
         version,
