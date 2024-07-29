@@ -25,6 +25,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import ListNav from '@/components/schema/list_nav';
 import exampleData from '@/data/example';
 import { addGraph, delGraph, getAllGraphs } from '@/engine/db';
+import graphState from '@/hooks/use-graph-state';
 
 const ImportModal = dynamic(() => import('@/components/schema/import_modal'), { ssr: false });
 
@@ -36,6 +37,7 @@ export default function Home() {
     const router = useRouter();
     const [graphs, setGraphs] = useState([]);
     const [showModal, setShowModal] = useState('');
+    const { setIsPublished } = graphState.useContainer();
 
     useEffect(() => {
         const initGraphs = async () => {
@@ -44,6 +46,7 @@ export default function Home() {
                 if (data && data.length) {
                     data.sort((a, b) => b.createdAt - a.createdAt);
                     setGraphs(data);
+                    setIsPublished(data.isPublished === 'true');
                 }
             } catch (e) {
                 console.log(e);

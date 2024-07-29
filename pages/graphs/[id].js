@@ -18,7 +18,7 @@ import graphState from '@/hooks/use-graph-state';
 import engineState from '@/hooks/use-engine-state';
 import tableModel from '@/hooks/table-model';
 import BaseModal from '../../components/BaseModal';
-import handler from '../api/hello';
+import { updateGraphRow, getGraph } from '@/engine/db';
 
 const ExportModal = dynamic(() => import('@/components/schema/export_modal'), {
     ssr: false,
@@ -40,12 +40,11 @@ export default function Home() {
         setBox,
         name,
         version,
+        isPublished,
+        setIsPublished,
     } = graphState.useContainer();
 
-    const { publish } = engineState.useContainer();
-
     const { updateGraph, addTable } = tableModel();
-
     const links = useMemo(() => Object.values(linkDict), [linkDict]);
     const svg = useRef();
 
@@ -61,7 +60,6 @@ export default function Home() {
     const [editingLink, setEditingLink] = useState(null);
     const [tableSelectedId, setTableSelectId] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
-    const [isPublishDisabled, setIsPublishDisabled] = useState(false);
 
     const [linkStat, setLinkStat] = useState({
         startX: null,
@@ -424,14 +422,11 @@ export default function Home() {
                 body: JSON.stringify(initialFormData),
             });
             const responsebody = await response.json();
-            console.log('🚀 ~ handleSubmit ~ response:', responsebody);
-
-            if (!response.ok) {
-                throw new Error('Wrong Email/Password. Please try again!');
-            } else {
-                setIsPublishDisabled(true);
-            }
+            setIsPublished(responsebody.statusCode === 204);
+            const graph = await getGraph(id);
+            updateGraphRow({ ...graph, isPublished: true }, id);
         } catch (error) {
+            console.log('🚀 ~ onConfirm ~ error:', error);
             // setError(error.message);
         }
     };
@@ -514,7 +509,7 @@ export default function Home() {
             />
             <div className="floating-button">
                 <Button
-                    disabled={isPublishDisabled}
+                    disabled={isPublished}
                     onClick={() => setShowConfirmation(true)}
                     size="large"
                     shape="round"

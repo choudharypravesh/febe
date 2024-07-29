@@ -45,7 +45,7 @@ const initGraphs = async () => {
 
 export const getAllGraphs = async () => {
     const r = await (
-        await fetch(`${soulUrl}/tables/graphs/rows?_schema=name,id,updatedAt,createdAt`)
+        await fetch(`${soulUrl}/tables/graphs/rows?_schema=name,id,updatedAt,createdAt,isPublished`)
     ).json();
     if (r.error) {
         await initGraphs();
@@ -89,6 +89,34 @@ export const addGraph = async (graph = {}, id = null) => {
         })
     ).json();
     return graphId;
+};
+
+export const updateGraph = async (graph = {}, id) => {
+    const data = {
+        id,
+        name: graph.name,
+        linkDict: graph.linkDict ? JSON.stringify(graph.linkDict) : undefined,
+        tableDict: graph.tableDict ? JSON.stringify(graph.tableDict) : undefined,
+        box: JSON.stringify({
+            x: 0,
+            y: 0,
+            w: global.innerWidth,
+            h: global.innerHeight,
+            clientW: global.innerWidth,
+            clientH: global.innerHeight,
+        }),
+        isPublished: graph.isPublished ? 'true' : 'false',
+    };
+    const r = await (
+        await fetch(`${soulUrl}/tables/graphs/rows/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            body: JSON.stringify({ fields: data }),
+        })
+    ).json();
+
+    console.log('🚀 ~ updateGraph ~ r:', r);
+    return r;
 };
 
 export const saveGraph = async graph => {

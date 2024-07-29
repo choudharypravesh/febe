@@ -11,6 +11,8 @@ export const getAllGraphs = async () => await dbc.getAllGraphs();
 
 export const getGraph = async id => await dbc.getGraph(id);
 
+export const updateGraphRow = async (graph, id) => dbc.updateGraph(graph, id);
+
 export const saveGraph = async data => {
     const { id, ...newData } = data;
     const { id: _, ...curData } = await dbc.getGraph(id);

@@ -78,6 +78,7 @@ function useGraphState() {
             });
         }
         if (graph.name) setName(graph.name);
+        if (graph.isPublished) setIsPublished(true);
     };
 
     useEffect(() => {
