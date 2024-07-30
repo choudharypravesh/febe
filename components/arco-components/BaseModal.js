@@ -1,7 +1,14 @@
 import React from 'react';
 import { Modal, Button } from '@arco-design/web-react';
 
-const BaseModal = ({ showConfirmation, setShowConfirmation, title, text, onConfirm }) => {
+const BaseModal = ({
+    showConfirmation,
+    setShowConfirmation,
+    title,
+    text,
+    onConfirm,
+    markClosable = false,
+}) => {
     const onOkClick = () => {
         onConfirm();
         setShowConfirmation(false);
@@ -18,6 +25,7 @@ const BaseModal = ({ showConfirmation, setShowConfirmation, title, text, onConfi
                 onCancel={() => setShowConfirmation(false)}
                 autoFocus={false}
                 focusLock={true}
+                maskClosable={markClosable}
             >
                 <p>{text}</p>
             </Modal>

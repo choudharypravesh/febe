@@ -3,7 +3,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { Button, Space } from '@arco-design/web-react';
+import { Button, Notification } from '@arco-design/web-react';
+import { customNotification } from '@/components/arco-components/Notifications';
 import { IconCheck } from '@arco-design/web-react/icon';
 import TableForm from '@/components/schema/table_form';
 import FieldForm from '@/components/schema/field_form';
@@ -17,7 +18,7 @@ import LogsDrawer from '@/components/schema/logs';
 import graphState from '@/hooks/use-graph-state';
 import engineState from '@/hooks/use-engine-state';
 import tableModel from '@/hooks/table-model';
-import BaseModal from '../../components/BaseModal';
+import BaseModal from '../../components/arco-components/BaseModal';
 import { updateGraphRow, getGraph } from '@/engine/db';
 
 const ExportModal = dynamic(() => import('@/components/schema/export_modal'), {
@@ -410,6 +411,17 @@ export default function Home() {
     );
 
     const onConfirm = async () => {
+        if (!isPublished) {
+            publishSchema();
+        } else {
+            customNotification(
+                'Please Wait',
+                'Our engines are processing your request. Please wait for 5 minutes and check back for the results.'
+            );
+        }
+    };
+
+    const publishSchema = async () => {
         const initialFormData = {
             graph_id: id,
         };
@@ -425,8 +437,18 @@ export default function Home() {
             setIsPublished(responsebody.statusCode === 204);
             const graph = await getGraph(id);
             updateGraphRow({ ...graph, isPublished: true }, id);
+            Notification.success({
+                title: 'Schema published successfully',
+            });
+            customNotification(
+                'Please Wait',
+                'Our engines are processing your request. Please wait for 5 minutes and check back for the results.'
+            );
         } catch (error) {
             console.log('🚀 ~ onConfirm ~ error:', error);
+            Notification.error({
+                title: 'Error publishing schema. Please try again.',
+            });
             // setError(error.message);
         }
     };
@@ -509,7 +531,7 @@ export default function Home() {
             />
             <div className="floating-button">
                 <Button
-                    disabled={isPublished}
+                    // disabled={isPublished}
                     onClick={() => setShowConfirmation(true)}
                     size="large"
                     shape="round"
