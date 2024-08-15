@@ -411,14 +411,15 @@ export default function Home() {
     );
 
     const onConfirm = async () => {
-        if (!isPublished) {
-            publishSchema();
-        } else {
-            customNotification(
-                'Please Wait',
-                'Our engines are processing your request. Please wait for 5 minutes and check back for the results.'
-            );
-        }
+        publishSchema();
+        // if (!isPublished) {
+        //     publishSchema();
+        // } else {
+        //     customNotification(
+        //         'Please Wait',
+        //         'Our engines are processing your request. Please wait for 5 minutes and check back for the results.'
+        //     );
+        // }
     };
 
     const publishSchema = async () => {
