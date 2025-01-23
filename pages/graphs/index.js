@@ -80,11 +80,6 @@ export default function Home() {
 
     return (
         <ProtectedRoute>
-            <Head>
-                <title>FEBE</title>
-                <meta name="description" content="Frontend for backend" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <ListNav
                 addGraph={() => handlerAddGraph()}
                 importGraph={() => setShowModal('import')}

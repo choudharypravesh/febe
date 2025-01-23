@@ -3,6 +3,7 @@ import { Space, Button, Switch } from '@arco-design/web-react';
 import { IconSunFill, IconMoonFill } from '@arco-design/web-react/icon';
 import authState from '@/hooks/use-auth-state';
 import graphState from '@/hooks/use-graph-state';
+import SideNavigation from '../arco-components/SideNavigation';
 
 /**
  * It renders a nav bar with a link to the home page, a button to add a new graph, and a dropdown menu
@@ -12,15 +13,17 @@ import graphState from '@/hooks/use-graph-state';
  */
 export default function ListNav({ importGraph, addGraph, addExample }) {
     const { theme, setTheme } = graphState.useContainer();
-    const { logout } = authState.useContainer();
+    const { logout, isLoggedIn } = authState.useContainer();
 
     return (
         <div className="nav">
-            <div>
+            <div className="nav-left">
+                {isLoggedIn && <SideNavigation />}
                 <Link href="/" passHref>
                     <strong>FEBE</strong>
                 </Link>
             </div>
+
             <Space>
                 <Button size="small" type="outline" shape="round" onClick={() => importGraph()}>
                     Import

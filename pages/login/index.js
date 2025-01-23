@@ -58,17 +58,6 @@ export default function Home() {
     return (
         <BaseLayout>
             <div className="login-container">
-                <PageHeader
-                    style={{
-                        background: 'var(--color-bg-2)',
-                        position: 'sticky',
-                        top: 0,
-                        boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)',
-                        zIndex: 2,
-                    }}
-                    title="FEBE"
-                    subTitle="Frontend for backend"
-                />
                 <div className="form-container">
                     <h2 className="text-center">Sign in to us</h2>
 

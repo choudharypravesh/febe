@@ -1,0 +1,3449 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/analytic/updateContent": {
+            "put": {
+                "tags": ["analytic-controller"],
+                "operationId": "updateContent",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/updateContent": {
+            "put": {
+                "tags": ["content-controller"],
+                "operationId": "updateContent_1",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/userSignUp": {
+            "post": {
+                "tags": ["user-controller"],
+                "operationId": "addNew",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/user-authentication": {
+            "post": {
+                "tags": ["user-controller"],
+                "operationId": "userAuth",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/update": {
+            "post": {
+                "tags": ["user-controller"],
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "middleName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "emailAddress",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/addProtocol": {
+            "post": {
+                "tags": ["user-controller"],
+                "operationId": "addProtocol",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/activate-user": {
+            "post": {
+                "tags": ["user-controller"],
+                "operationId": "activateUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/users/activate-user-new": {
+            "post": {
+                "tags": ["user-controller"],
+                "operationId": "activateUserNew",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/testApi": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "calltest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/markHelpful": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "reviewsHelpful",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/listPagginationPages": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "listPages",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/listPages": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "listPages_1",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/like-dislike": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "reviewsLike",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/getDataByQuery": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "getDataByQuery",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/add": {
+            "post": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "reviewsRating",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reply/add": {
+            "post": {
+                "tags": ["review-reply-controller"],
+                "operationId": "addReplyOnReviews",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reply/add2": {
+            "post": {
+                "tags": ["review-reply-controller"],
+                "operationId": "addReplyOnReviews2",
+                "parameters": [
+                    {
+                        "name": "contentId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "reviewId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "replyHeading",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "replyBody",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/apiKey/viewApiKey": {
+            "post": {
+                "tags": ["api-token-controller"],
+                "operationId": "viewApiKey",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/apiKey/generateApiKey": {
+            "post": {
+                "tags": ["api-token-controller"],
+                "operationId": "generateApiKey",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytic/upload": {
+            "post": {
+                "tags": ["analytic-controller"],
+                "operationId": "uploadFile",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": ["file"],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytic/upload3": {
+            "post": {
+                "tags": ["analytic-controller"],
+                "operationId": "uploadFile3",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": ["file"],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytic/upload2": {
+            "post": {
+                "tags": ["analytic-controller"],
+                "operationId": "uploadFile2",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": ["file"],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytic/addContent": {
+            "post": {
+                "tags": ["analytic-controller"],
+                "operationId": "addContent",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/upload": {
+            "post": {
+                "tags": ["content-controller"],
+                "operationId": "uploadFile_1",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": ["file"],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/upload3": {
+            "post": {
+                "tags": ["content-controller"],
+                "operationId": "uploadFile3_1",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": ["file"],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/upload2": {
+            "post": {
+                "tags": ["content-controller"],
+                "operationId": "uploadFile2_1",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": ["file"],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/add": {
+            "post": {
+                "tags": ["crud"],
+                "operationId": "add",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/addContent": {
+            "post": {
+                "tags": ["content-controller"],
+                "operationId": "addContent_1",
+                "parameters": [
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/add2": {
+            "post": {
+                "tags": ["crud"],
+                "operationId": "add2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/searchUserByQuery": {
+            "get": {
+                "tags": ["user-controller"],
+                "operationId": "userSearchByQuery",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "8"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "fl",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "fq",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/changeUserStatus": {
+            "get": {
+                "tags": ["user-controller"],
+                "operationId": "changeUserStatus",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userStatusFlag",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/{reviewContentId}": {
+            "get": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "findOneReviewOnContentOnly",
+                "parameters": [
+                    {
+                        "name": "reviewContentId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "noOfRecords",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 12
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SolrDocument"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/findReviewAnalytic": {
+            "get": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "findReviewAnalytic",
+                "parameters": [
+                    {
+                        "name": "contentId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "noOfRecords",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/findAnalyticLikeOnReview": {
+            "get": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "findAnalyticOnReview",
+                "parameters": [
+                    {
+                        "name": "contentId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "reviewId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "noOfRecords",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/findAllReview": {
+            "get": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "findAllReview",
+                "parameters": [
+                    {
+                        "name": "noOfRecords",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/findAllReviewOnContent": {
+            "get": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "findAllReviewOnContent",
+                "parameters": [
+                    {
+                        "name": "contentId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "noOfRecords",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/review-ratting/findAllReviewOnContentOnly": {
+            "get": {
+                "tags": ["comment-ratting-controller"],
+                "operationId": "findAllReviewOnContentOnly",
+                "parameters": [
+                    {
+                        "name": "contentId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "noOfRecords",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytic/contentAnalytic": {
+            "get": {
+                "tags": ["analytic-controller"],
+                "operationId": "advanceSearch",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "8"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "fl",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "fq",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/searchContentByQuery": {
+            "get": {
+                "tags": ["content-controller"],
+                "operationId": "advanceSearch_1",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "8"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "fl",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "fq",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/searchContentById": {
+            "get": {
+                "tags": ["content-controller"],
+                "operationId": "searchContentById",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "8"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "fl",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "fq",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/parse-response": {
+            "get": {
+                "tags": ["crud"],
+                "operationId": "parseResponse",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/find": {
+            "get": {
+                "tags": ["crud"],
+                "operationId": "test",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/findByQuery": {
+            "get": {
+                "tags": ["crud"],
+                "operationId": "advanceSearch_2",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rows",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "8"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "filterField",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "filterQuery",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "advanceField",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "default": []
+                        }
+                    },
+                    {
+                        "name": "advanceQuery",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "advance",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "false"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytic/deleteByQuery": {
+            "delete": {
+                "tags": ["analytic-controller"],
+                "operationId": "deleteByQuery",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/*/deleteByQuery": {
+            "delete": {
+                "tags": ["content-controller"],
+                "operationId": "deleteByQuery_1",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-API-Key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-USER-ID",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "empty": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "required": ["password", "username"],
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SolrDocument": {
+                "type": "object",
+                "properties": {
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "fieldValuesMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "fieldValueMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    },
+                    "childDocumentCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fieldNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": {
+                    "type": "object"
+                }
+            },
+            "FacetFieldDTO": {
+                "type": "object",
+                "properties": {
+                    "fieldName": {
+                        "type": "string"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FacetValueDTO"
+                        }
+                    }
+                }
+            },
+            "FacetValueDTO": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "ResponseMessage": {
+                "type": "object",
+                "properties": {
+                    "responseMessage": {
+                        "type": "string"
+                    },
+                    "query": {
+                        "type": "string"
+                    },
+                    "responseType": {
+                        "type": "string"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "start": {
+                        "type": "string"
+                    },
+                    "row": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "statusCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalRecords": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "records": {
+                        "type": "array",
+                        "properties": {
+                            "numFound": {
+                                "type": "integer",
+                                "format": "int64"
+                            },
+                            "start": {
+                                "type": "integer",
+                                "format": "int64"
+                            },
+                            "maxScore": {
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "empty": {
+                                "type": "boolean"
+                            }
+                        },
+                        "items": {
+                            "$ref": "#/components/schemas/SolrDocument"
+                        }
+                    },
+                    "advanced": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FacetFieldDTO"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
