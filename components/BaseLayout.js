@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
-import { PageHeader, Button, Space } from '@arco-design/web-react';
+import { PageHeader, Button, Space, Notification } from '@arco-design/web-react';
 import { IconCodeSandbox } from '@arco-design/web-react/icon'; // Import the icon
 import Link from 'next/link';
 import SideNavigation from './arco-components/SideNavigation';
 import authState from '@/hooks/use-auth-state';
 import ListNav from '@/components/schema/list_nav';
 import styles from '../styles/components/BaseLayout.module.css';
+import { WebSocketContext } from '../context/WebSocketProvider';
 
 const BaseLayout = ({ children }) => {
     const { isLoggedIn, logout } = authState.useContainer();
+    const { messages } = useContext(WebSocketContext);
+
+    useEffect(() => {
+        if (messages.length > 0) {
+            const latestMessage = messages[messages.length - 1];
+            Notification.info({
+                title: 'Graph published successfully',
+                content: `Graph ID: ${latestMessage.graphId}`,
+                //duration: 500,
+            });
+        }
+    }, [messages]);
+
     return (
         <div className="febe-container">
             <Head>
