@@ -1,13 +1,15 @@
 import { createContext, useEffect, useState } from 'react';
 
 export const WebSocketContext = createContext(null);
+const baseUrl = process.env.NEXT_PUBLIC_BE_BASE_URL;
+const port = process.env.NEXT_PUBLIC_BE_PORT;
 
 export const WebSocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const ws = new WebSocket('ws://localhost:4000');
+        const ws = new WebSocket(`ws://${baseUrl}:${port}`);
 
         ws.onopen = () => console.log('[WS] Connected to WebSocket Server');
 
