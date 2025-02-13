@@ -8,7 +8,7 @@ const port = process.env.NEXT_PUBLIC_BE_PORT;
 const isLocal = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 
 // Construct WebSocket URL dynamically
-const wsUrl = isLocal ? `ws://${baseUrl}:${port}` : `wss://${baseUrl}`;
+const wsUrl = isLocal ? `ws://${baseUrl}:${port}` : `wss://${baseUrl}/ws/`;
 
 export const WebSocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
