@@ -9,7 +9,7 @@ export const WebSocketProvider = ({ children }) => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const ws = new WebSocket(`ws://${baseUrl}:${port}`);
+        const ws = new WebSocket(`wss://${baseUrl}:${port}`);
 
         ws.onopen = () => console.log('[WS] Connected to WebSocket Server');
 
