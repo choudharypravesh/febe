@@ -4,12 +4,18 @@ export const WebSocketContext = createContext(null);
 const baseUrl = process.env.NEXT_PUBLIC_BE_BASE_URL;
 const port = process.env.NEXT_PUBLIC_BE_PORT;
 
+// Determine if running in a local environment
+const isLocal = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+
+// Construct WebSocket URL dynamically
+const wsUrl = isLocal ? `ws://${baseUrl}:${port}` : `wss://${baseUrl}`;
+
 export const WebSocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const ws = new WebSocket(`wss://${baseUrl}:${port}`);
+        const ws = new WebSocket(wsUrl);
 
         ws.onopen = () => console.log('[WS] Connected to WebSocket Server');
 
