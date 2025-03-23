@@ -79,7 +79,8 @@ export default function Home() {
     };
 
     return (
-        <ProtectedRoute>
+        <>
+            {/* <ProtectedRoute> */}
             <ListNav
                 addGraph={() => handlerAddGraph()}
                 importGraph={() => setShowModal('import')}
@@ -158,6 +159,7 @@ export default function Home() {
                 onCloseModal={() => setShowModal('')}
                 cb={args => handlerImportGraph(args)}
             />
-        </ProtectedRoute>
+            {/* </ProtectedRoute> */}
+        </>
     );
 }

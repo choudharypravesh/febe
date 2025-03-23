@@ -11,44 +11,44 @@ const Step = Steps.Step;
 export default function Home() {
     const { logout } = authState.useContainer();
     return (
-        <ProtectedRoute>
-            <BaseLayout>
-                <div className="index-container">
-                    <div className="index-bg">
-                        <Typography.Title className="tc" type="secondary">
-                            <p className="mark">FEBE helps you create your database architecture</p>
-                        </Typography.Title>
-                        <Link href="/graphs">
-                            <Button
-                                type="primary"
-                                size="large"
-                                className="start-button"
-                                style={{
-                                    fontSize: '2em',
-                                    height: 'auto',
-                                }}
-                            >
-                                Get started
-                            </Button>
-                        </Link>
-                    </div>
-
-                    <div className="index-steps">
-                        <Steps
-                            labelPlacement="vertical"
-                            current={5}
+        // <ProtectedRoute>
+        <BaseLayout>
+            <div className="index-container">
+                <div className="index-bg">
+                    <Typography.Title className="tc" type="secondary">
+                        <p className="mark">FEBE helps you create your database architecture</p>
+                    </Typography.Title>
+                    <Link href="/graphs">
+                        <Button
+                            type="primary"
+                            size="large"
+                            className="start-button"
                             style={{
-                                maxWidth: '1200px',
-                                margin: '100px auto',
+                                fontSize: '2em',
+                                height: 'auto',
                             }}
                         >
-                            <Step title="Design data structures" description="Visually" />
-                            <Step title="Create relationships" description="Drag and drop" />
-                            <Step title="Give us 10 mins" description="Your APIs are ready!" />
-                        </Steps>
-                    </div>
+                            Get started
+                        </Button>
+                    </Link>
                 </div>
-            </BaseLayout>
-        </ProtectedRoute>
+
+                <div className="index-steps">
+                    <Steps
+                        labelPlacement="vertical"
+                        current={5}
+                        style={{
+                            maxWidth: '1200px',
+                            margin: '100px auto',
+                        }}
+                    >
+                        <Step title="Design data structures" description="Visually" />
+                        <Step title="Create relationships" description="Drag and drop" />
+                        <Step title="Give us 10 mins" description="Your APIs are ready!" />
+                    </Steps>
+                </div>
+            </div>
+        </BaseLayout>
+        // </ProtectedRoute>
     );
 }
