@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { IconPlus } from '@arco-design/web-react/icon';
+import { Button, Message, Modal } from '@arco-design/web-react';
 
 import TableForm from '@/components/table_form';
 import FieldForm from '@/components/field_form';
@@ -34,7 +36,9 @@ export default function Home() {
         setBox,
         name,
         version,
+        id,
     } = graphState.useContainer();
+    const graphObject = graphState.useContainer();
 
     const { updateGraph, addTable } = tableModel();
 
@@ -62,6 +66,9 @@ export default function Home() {
         endY: null,
     });
 
+    const [publishModalVisible, setPublishModalVisible] = useState(false);
+    const [publishData, setPublishData] = useState('');
+
     /**
      * It sets the offset to the mouse position relative to the box, and sets the mode to 'draging'
      */
@@ -74,6 +81,123 @@ export default function Home() {
             setMode('draging');
         }
     };
+
+    function handlePublish(graphData) {
+        const transformedData = transformSchema(graphData, graphData.id);
+        setPublishData(JSON.stringify(transformedData, null, 2));
+        setPublishModalVisible(true);
+    }
+
+    function handleCopy() {
+        navigator.clipboard.writeText(publishData);
+        Message.success('Copied to clipboard!');
+    }
+
+    function transformSchema(data, graph_id) {
+        try {
+            const schema = data;
+            if (!schema || typeof schema !== 'object') {
+                throw new Error('Invalid schema provided');
+            }
+
+            const result = {
+                projectName: schema.name || 'Unknown Project',
+                enviromentID: '1234',
+                organizationID: '1234',
+                subOrganizationID: '1234',
+                graphID: graph_id,
+                schema: JSON.stringify(schema),
+                tables: [],
+            };
+
+            let tableDict, linkDict;
+            try {
+                tableDict = schema.tableDict;
+                linkDict = schema.linkDict;
+            } catch (error) {
+                throw new Error('Error parsing tableDict or linkDict: ' + error.message);
+            }
+
+            if (!tableDict || !linkDict) {
+                throw new Error('tableDict or linkDict is missing or invalid');
+            }
+
+            // Helper functions
+            const getFieldNameById = (tableId, fieldId) => {
+                const table = tableDict[tableId];
+                return table?.fields?.find(f => f.id === fieldId)?.name;
+            };
+
+            const getTableNameById = id => tableDict[id]?.name;
+
+            const tableRelations = {};
+
+            // Relationship grouping logic
+            const upsertRelationship = (sourceTableId, targetTableName, mapping) => {
+                if (!tableRelations[sourceTableId]) tableRelations[sourceTableId] = [];
+
+                const existing = tableRelations[sourceTableId].find(
+                    rel => rel.table === targetTableName
+                );
+
+                if (existing) {
+                    existing.mappings.push(mapping);
+                } else {
+                    tableRelations[sourceTableId].push({
+                        table: targetTableName,
+                        mappings: [mapping],
+                    });
+                }
+            };
+
+            // Process links
+            for (const link of Object.values(linkDict)) {
+                try {
+                    if (!link.endpoints?.length === 2) continue;
+
+                    const [ep1, ep2] = link.endpoints;
+                    const t1 = ep1.id,
+                        t2 = ep2.id;
+                    const f1 = getFieldNameById(t1, ep1.fieldId);
+                    const f2 = getFieldNameById(t2, ep2.fieldId);
+                    const tn1 = getTableNameById(t1);
+                    const tn2 = getTableNameById(t2);
+
+                    if (!tn1 || !tn2 || !f1 || !f2) continue;
+
+                    // Create bidirectional mappings
+                    const mapping1 = { [`${tn1}.${f1}`]: `${tn2}.${f2}` };
+                    const mapping2 = { [`${tn2}.${f2}`]: `${tn1}.${f1}` };
+
+                    upsertRelationship(t1, tn2, mapping1);
+                    upsertRelationship(t2, tn1, mapping2);
+                } catch (error) {
+                    console.error('Error processing link:', error);
+                }
+            }
+
+            // Build final tables
+            for (const table of Object.values(tableDict)) {
+                try {
+                    if (!table.name || !table.fields) continue;
+
+                    result.tables.push({
+                        [table.name]: {
+                            fields: table.fields.map(({ name, type }) => ({ name, type })),
+                            relations: tableRelations[table.id] || [],
+                        },
+                    });
+                } catch (error) {
+                    console.error('Error processing table:', error);
+                }
+            }
+
+            return result;
+        } catch (error) {
+            console.error('Transform error:', error);
+            return null;
+        }
+    }
 
     /**
      * It sets the moving table to the table that was clicked on, and sets the mode to moving
@@ -401,6 +525,14 @@ export default function Home() {
         { preventDefault: true }
     );
 
+    // Prepare the graph data to be published
+    const graphData = {
+        tables: tableDict,
+        links: linkDict,
+        name,
+        version,
+    };
+
     return (
         <div className="graph">
             <Head>
@@ -473,6 +605,54 @@ export default function Home() {
                 setTableSelectId={setTableSelectId}
                 tableSelectedId={tableSelectedId}
             />
+
+            {/* Floating Publish Button */}
+            <Button
+                type="primary"
+                style={{
+                    position: 'fixed',
+                    bottom: 32,
+                    right: 32,
+                    background: '#00b96b',
+                    borderColor: '#00b96b',
+                    color: '#fff',
+                    zIndex: 1000,
+                }}
+                size="large"
+                onClick={() => handlePublish(graphObject)}
+            >
+                Publish
+            </Button>
+
+            {/* Publish Modal */}
+            <Modal
+                title="Transformed Data"
+                visible={publishModalVisible}
+                onCancel={() => setPublishModalVisible(false)}
+                footer={
+                    <Button type="primary" onClick={handleCopy}>
+                        Copy
+                    </Button>
+                }
+                style={{ top: 32 }}
+                autoFocus={false}
+                focusLock={true}
+                unmountOnExit
+                width={600}
+            >
+                <pre
+                    style={{
+                        maxHeight: 400,
+                        overflow: 'auto',
+                        background: '#f6f6f6',
+                        padding: 16,
+                        borderRadius: 4,
+                        fontSize: 13,
+                    }}
+                >
+                    {publishData}
+                </pre>
+            </Modal>
         </div>
     );
 }

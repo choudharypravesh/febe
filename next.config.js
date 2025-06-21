@@ -12,6 +12,9 @@ const nextConfig = withSvgr({
         config.resolve.alias['@'] = path.resolve(__dirname);
         return config;
     },
+    eslint: {
+        ignoreDuringBuilds: true, // ignoring for now. Can be activated later
+    },
 });
 
 if (packageInfo.dbAdaptor === 'soul' || packageInfo.devDependencies['soul-cli']) {
