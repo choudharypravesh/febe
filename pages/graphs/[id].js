@@ -203,6 +203,7 @@ export default function Home() {
                                               not_null: !!not_null,
                                               increment: !!increment,
                                               secure: !!secure,
+                                              note: note || '',
                                           })
                                       )
                                     : false, // If fields are missing or empty, set as false

@@ -290,6 +290,7 @@ export default function TableForm(props) {
             not_null: !!field.not_null,
             increment: !!field.increment,
             secure: !!field.secure,
+            note: field.note || '',
         }));
 
         const newTable = {
