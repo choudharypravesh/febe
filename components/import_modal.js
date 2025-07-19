@@ -47,9 +47,11 @@ export default function ImportModal({ showModal, onCloseModal, cb = p => {} }) {
                             increment: field.increment,
                             name: field.name,
                             not_null: field.not_null,
+                            secure: field.secure,
                             note: field.note,
                             pk: field.pk,
                             unique: field.unique,
+                            secure: field.secure,
                             type: field.type.type_name.toUpperCase(),
                         };
                     }),

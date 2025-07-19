@@ -41,6 +41,11 @@ const RenderTableTips = ({ field }) => (
                         INCREMENT
                     </Tag>
                 )}
+                {field.secure && (
+                    <Tag size="small" color="lime">
+                        SECURE
+                    </Tag>
+                )}
             </Space>
 
             <div className="field-item dbdefault">

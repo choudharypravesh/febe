@@ -183,7 +183,17 @@ export default function Home() {
 
                     result.tables.push({
                         [table.name]: {
-                            fields: table.fields.map(({ name, type }) => ({ name, type })),
+                            fields: table.fields.map(
+                                ({ name, type, pk, unique, not_null, increment, secure }) => ({
+                                    name,
+                                    type,
+                                    pk,
+                                    unique,
+                                    not_null,
+                                    increment,
+                                    secure,
+                                })
+                            ),
                             relations: tableRelations[table.id] || [],
                         },
                     });

@@ -158,6 +158,9 @@ function TableFormItem(props) {
                     <Form.Item noStyle field={`${index}.increment`} initialValue={field.increment}>
                         <Checkbox defaultChecked={field.increment}>Increment</Checkbox>
                     </Form.Item>
+                    <Form.Item noStyle field={`${index}.secure`} initialValue={field.secure}>
+                        <Checkbox defaultChecked={field.secure}>Secure</Checkbox>
+                    </Form.Item>
                 </Space>
 
                 <Space className="table-form-item">

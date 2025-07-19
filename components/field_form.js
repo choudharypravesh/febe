@@ -136,6 +136,9 @@ export default function FieldForm(props) {
                             <Form.Item noStyle field="increment" initialValue={field.increment}>
                                 <Checkbox defaultChecked={field.increment}>Increment</Checkbox>
                             </Form.Item>
+                            <Form.Item noStyle field="secure" initialValue={field.secure}>
+                                <Checkbox defaultChecked={field.secure}>Secure</Checkbox>
+                            </Form.Item>
                         </Space>
                     </Space>
                 </Form>
