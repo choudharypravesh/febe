@@ -179,22 +179,35 @@ export default function Home() {
             // Build final tables
             for (const table of Object.values(tableDict)) {
                 try {
-                    if (!table.name || !table.fields) continue;
+                    if (!table.name) continue;
 
                     result.tables.push({
                         [table.name]: {
-                            fields: table.fields.map(
-                                ({ name, type, pk, unique, not_null, increment, secure }) => ({
-                                    name,
-                                    type,
-                                    pk,
-                                    unique,
-                                    not_null,
-                                    increment,
-                                    secure,
-                                })
-                            ),
+                            fields:
+                                Array.isArray(table.fields) && table.fields.length > 0
+                                    ? table.fields.map(
+                                          ({
+                                              name,
+                                              type,
+                                              pk,
+                                              unique,
+                                              not_null,
+                                              increment,
+                                              secure,
+                                              note,
+                                          }) => ({
+                                              name: name || false,
+                                              type: type || false,
+                                              pk: !!pk,
+                                              unique: !!unique,
+                                              not_null: !!not_null,
+                                              increment: !!increment,
+                                              secure: !!secure,
+                                          })
+                                      )
+                                    : false, // If fields are missing or empty, set as false
                             relations: tableRelations[table.id] || [],
+                            note: table.note || '',
                         },
                     });
                 } catch (error) {

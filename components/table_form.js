@@ -282,11 +282,21 @@ export default function TableForm(props) {
 
     const save = values => {
         const { name, note, ...fields } = values;
+        // Convert fields object to array and ensure boolean fields are always true/false
+        const normalizedFields = Object.values(fields).map(field => ({
+            ...field,
+            pk: !!field.pk,
+            unique: !!field.unique,
+            not_null: !!field.not_null,
+            increment: !!field.increment,
+            secure: !!field.secure,
+        }));
+
         const newTable = {
             ...editingTable,
             name,
             note,
-            fields: Object.values(fields),
+            fields: normalizedFields,
         };
         updateTable(newTable);
     };
